@@ -1,1 +1,3 @@
-export type currency = { [key: string]: number | string };
+export interface currency {
+  [key: string]: number | string;
+}

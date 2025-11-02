@@ -1,4 +1,4 @@
-import { controllers } from "./controllers";
+import { controllers } from "./controllers/controllers";
 import { table } from "./table/table";
 
 export function main() {

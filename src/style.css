@@ -156,16 +156,17 @@ main {
         td {
           padding: var(--padding-small);
 
-          .green, .red{
+          .green,
+          .red {
             padding: var(--padding-tiny);
             border-radius: var(--border-radius-small);
             width: fit-content;
           }
-          .green{
+          .green {
             color: rgb(0, 173, 95);
             background-color: rgb(223, 252, 239);
           }
-          .red{
+          .red {
             color: hsl(350, 81%, 49%);
             background-color: hsl(350, 100%, 97%);
           }

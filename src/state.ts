@@ -1,9 +1,10 @@
 //filtering and search logic
 
 import { fetchCoinGecko } from "./api";
-import { updateDate } from "./components/controllers";
-import { updateTbodyContent } from "./components/table/table";
+import { updateDate } from "./components/controllers/strips/leftStrip";
+import { updateTbodyContent } from "./components/table/components/tbody";
 import type { currency } from "./types";
+import { parseString } from "./utils";
 
 let Currencies: currency[];
 let filteredCurrencies: currency[];
@@ -19,6 +20,23 @@ export async function fetchCurrencies() {
   callUpdateDate();
 }
 
+export function searchCurrency(token: string) {
+  if (!token.trim()) {
+    updateTbodyContent(Currencies);
+  } else {
+    filteredCurrencies = Currencies.filter(
+      (currency) =>
+        parseString(currency["name"] as string).includes(
+          parseString(token.toLowerCase()),
+        ) ||
+        parseString(currency["symbol"] as string).includes(
+          parseString(token.toLowerCase()),
+        ),
+    );
+    updateTbodyContent(filteredCurrencies);
+  }
+}
+
 function callUpdateDate() {
   if (lastUpdateIntervalTimer) {
     clearInterval(lastUpdateIntervalTimer);
@@ -26,5 +44,8 @@ function callUpdateDate() {
 
   updateDate(lastUpdate);
 
-  lastUpdateIntervalTimer = setInterval(() => updateDate(lastUpdate), 60 * 1000);
+  lastUpdateIntervalTimer = setInterval(
+    () => updateDate(lastUpdate),
+    60 * 1000,
+  );
 }

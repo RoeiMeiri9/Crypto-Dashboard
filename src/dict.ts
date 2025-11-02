@@ -9,7 +9,7 @@ export const dict = {
     lastUpdate: {
       static: "Last Update:",
       now: "Now",
-      min: "Min"
+      min: "Min",
     },
     refresh: "Refresh",
   },
