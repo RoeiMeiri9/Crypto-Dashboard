@@ -6,7 +6,11 @@ export const dict = {
   interactions: {
     search: "Search",
     filter: "Filter",
-    lastUpdate: "Last Update: ",
+    lastUpdate: {
+      static: "Last Update:",
+      now: "Now",
+      min: "Min"
+    },
     refresh: "Refresh",
   },
 

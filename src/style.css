@@ -14,10 +14,10 @@
   --border-radius-small: 4px;
 
   --padding-huge: 40px;
-  --padding-lr-big: 30px;
-  --padding-tb-big: 20px;
+  --padding-half-big: 20px;
   --padding-medium: 16px;
   --padding-small: 12px;
+  --padding-tiny: 6px;
 
   --gap-big: 16px;
   --gap-small: 10px;
@@ -69,7 +69,7 @@ button:hover {
 header,
 footer {
   display: flex;
-  padding: var(--padding-tb-big) var(--padding-lr-big);
+  padding: var(--padding-half-big) var(--padding-huge);
   gap: var(--gap-big);
   align-items: center;
 
@@ -93,7 +93,7 @@ main {
 
   .card {
     height: 100%;
-    padding: var(--padding-tb-big);
+    padding: var(--padding-half-big);
     display: grid;
     grid-auto-flow: row;
     gap: var(--gap-small);
@@ -155,6 +155,20 @@ main {
 
         td {
           padding: var(--padding-small);
+
+          .green, .red{
+            padding: var(--padding-tiny);
+            border-radius: var(--border-radius-small);
+            width: fit-content;
+          }
+          .green{
+            color: rgb(0, 173, 95);
+            background-color: rgb(223, 252, 239);
+          }
+          .red{
+            color: hsl(350, 81%, 49%);
+            background-color: hsl(350, 100%, 97%);
+          }
         }
       }
     }

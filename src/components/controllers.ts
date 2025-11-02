@@ -1,4 +1,7 @@
 import { dict } from "../dict";
+import { dateCalculation } from "../utils";
+
+export let lastUpdate: HTMLSpanElement;
 
 export function controllers() {
   const controllers = document.createElement("div");
@@ -28,16 +31,18 @@ export function rightStrip() {
 
 export function leftStrip() {
   const leftStrip = document.createElement("div");
-  const lastSeen = document.createElement("span");
-
-  lastSeen.innerText = dict.interactions.lastUpdate;
+  lastUpdate = document.createElement("span");
 
   const refresh = document.createElement("button");
   refresh.innerText = dict.interactions.refresh;
 
-  leftStrip.append(lastSeen);
+  leftStrip.append(lastUpdate);
   leftStrip.append(refresh);
   leftStrip.classList.add("leftStrip");
 
   return leftStrip;
+}
+
+export function updateDate(date: Date) {
+  lastUpdate.innerText = `${dict.interactions.lastUpdate.static} ${dateCalculation(date)}`;
 }
