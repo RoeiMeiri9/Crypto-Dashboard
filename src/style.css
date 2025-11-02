@@ -1,0 +1,171 @@
+:root {
+  --font-color-strong: #11141e;
+  --font-color-light: #7480a7;
+  --element-bg-color: #fff;
+  --page-bg-color: #fcfdff;
+
+  --shadow-color: rgba(187, 192, 212, 0.06);
+  --shadow: 0 -6px 31.4px 10px var(--shadow-color);
+
+  --border-color: rgba(185, 192, 223, 0.25);
+  --border: 1px solid var(--border-color);
+
+  --border-radius-big: 8px;
+  --border-radius-small: 4px;
+
+  --padding-huge: 40px;
+  --padding-lr-big: 30px;
+  --padding-tb-big: 20px;
+  --padding-medium: 16px;
+  --padding-small: 12px;
+
+  --gap-big: 16px;
+  --gap-small: 10px;
+
+  --h3-size: 28px;
+  --text-size: 14px;
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Inter";
+  font-size: var(--text-size);
+  color: var(--font-color-light);
+
+  background-color: var(--page-bg-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input,
+button {
+  border-radius: var(--border-radius-small);
+  border: var(--border);
+  padding: var(--padding-small);
+  background-color: var(--element-bg-color);
+  color: var(--font-color-light);
+}
+
+input::placeholder {
+  color: var(--font-color-light);
+}
+
+button:hover {
+  background-color: var(--page-bg-color);
+  cursor: pointer;
+}
+
+#app {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header,
+footer {
+  display: flex;
+  padding: var(--padding-tb-big) var(--padding-lr-big);
+  gap: var(--gap-big);
+  align-items: center;
+
+  background-color: var(--element-bg-color);
+  box-shadow: var(--shadow);
+}
+
+header {
+  border-bottom: var(--border);
+  color: var(--font-color-strong);
+
+  h3 {
+    font-weight: 500;
+    margin: 0;
+    font-size: 28px;
+  }
+}
+
+main {
+  padding: var(--padding-huge);
+
+  .card {
+    height: 100%;
+    padding: var(--padding-tb-big);
+    display: grid;
+    grid-auto-flow: row;
+    gap: var(--gap-small);
+
+    background-color: var(--element-bg-color);
+    border: var(--border);
+    border-radius: var(--border-radius-big);
+    box-shadow: var(--shadow);
+
+    .controllers {
+      display: flex;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+
+        &.leftStrip {
+          justify-content: end;
+        }
+      }
+    }
+
+    .table {
+      overflow-y: auto;
+      border-radius: var(--border-radius-small);
+      border: var(--border);
+
+      table {
+        table-layout: fixed;
+
+        border-collapse: collapse;
+        width: 100%;
+
+        td,
+        th {
+          border-right: var(--border);
+          border-bottom: var(--border);
+        }
+
+        th:last-child,
+        tr td:last-child {
+          border-right: none;
+        }
+        tr:last-child td {
+          border-bottom: none;
+        }
+
+        th {
+          padding: var(--padding-medium) var(--padding-small);
+          text-align: start;
+          background: var(--page-bg-color);
+        }
+
+        td {
+          padding: var(--padding-small);
+        }
+      }
+    }
+  }
+}
+
+footer {
+  border-top: var(--border);
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/Inter-VariableFont_opsz,wght.ttf");
+}
