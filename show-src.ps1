@@ -24,5 +24,3 @@ finally {
 }
 
 Write-Host "✅ Dump complete. File saved as $outputFile"
-
-#to run, write ./show-src.ps1 > project_dump.txt

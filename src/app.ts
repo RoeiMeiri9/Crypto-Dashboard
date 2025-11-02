@@ -6,8 +6,8 @@ import { dict } from "./dict";
 import { fetchCurrencies } from "./state";
 
 document.title = dict.title;
-app().forEach((component) =>
-  document.querySelector("#app")?.appendChild(component),
-);
+const root = document.querySelector("#app");
+
+app().forEach((component) => root?.appendChild(component));
 
 fetchCurrencies();

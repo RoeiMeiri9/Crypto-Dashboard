@@ -6,25 +6,27 @@ import { updateTbodyContent } from "./components/table/components/tbody";
 import type { currency } from "./types";
 import { parseString } from "./utils";
 
-let Currencies: currency[];
-let filteredCurrencies: currency[];
-let lastUpdate: Date;
-let lastUpdateIntervalTimer: number;
+const State = {  
+  Currencies: [] as currency[],
+  filteredCurrencies: [] as currency[],
+  lastUpdate: new Date(),
+  timer: 0,
+}
 
 export async function fetchCurrencies() {
-  Currencies = await fetchCoinGecko();
+  State.Currencies = await fetchCoinGecko();
 
-  lastUpdate = new Date(Date.now());
+  State.lastUpdate = new Date(Date.now());
 
-  updateTbodyContent(Currencies);
+  updateTbodyContent(State.Currencies);
   callUpdateDate();
 }
 
 export function searchCurrency(token: string) {
   if (!token.trim()) {
-    updateTbodyContent(Currencies);
+    updateTbodyContent(State.Currencies);
   } else {
-    filteredCurrencies = Currencies.filter(
+    State.filteredCurrencies = State.Currencies.filter(
       (currency) =>
         parseString(currency["name"] as string).includes(
           parseString(token.toLowerCase()),
@@ -33,19 +35,19 @@ export function searchCurrency(token: string) {
           parseString(token.toLowerCase()),
         ),
     );
-    updateTbodyContent(filteredCurrencies);
+    updateTbodyContent(State.filteredCurrencies);
   }
 }
 
 function callUpdateDate() {
-  if (lastUpdateIntervalTimer) {
-    clearInterval(lastUpdateIntervalTimer);
+  if (State.timer) {
+    clearInterval(State.timer);
   }
 
-  updateDate(lastUpdate);
+  updateDate(State.lastUpdate);
 
-  lastUpdateIntervalTimer = setInterval(
-    () => updateDate(lastUpdate),
+  State.timer = setInterval(
+    () => updateDate(State.lastUpdate),
     60 * 1000,
   );
 }

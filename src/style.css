@@ -95,7 +95,7 @@ main {
     height: 100%;
     padding: var(--padding-half-big);
     display: grid;
-    grid-auto-flow: row;
+    grid-template-rows: auto 1fr;
     gap: var(--gap-small);
 
     background-color: var(--element-bg-color);

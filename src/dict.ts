@@ -5,7 +5,6 @@ export const dict = {
   poweredBy: "Powered by CoinGecko API",
   interactions: {
     search: "Search",
-    filter: "Filter",
     lastUpdate: {
       static: "Last Update:",
       now: "Now",
