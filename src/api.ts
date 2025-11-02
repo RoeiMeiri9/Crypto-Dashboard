@@ -1,1 +1,1 @@
-//fetches and stuff
+//handles all API calls

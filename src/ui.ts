@@ -1,4 +1,4 @@
-//implementing the main UI
+//DOM rendering and updates
 
 import { footer } from "./components/footer";
 import { header } from "./components/header";

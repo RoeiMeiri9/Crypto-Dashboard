@@ -1,4 +1,4 @@
-//main port of the program
+//entry point (initialization)
 
 import { app } from "./ui";
 import "./style.css";
